@@ -2,7 +2,6 @@
 
 namespace App\Containers;
 
-interface ContainerInterface
-{
-
+interface ContainerInterface {
+    public static function generateContainer();
 }

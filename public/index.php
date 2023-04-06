@@ -1,12 +1,15 @@
 <?php
 
+use App\Containers\AppContainer;
 use Slim\Factory\AppFactory;
 use \Psr\Http\Message\RequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
-use App\Controllers\BooksController;
 
 require '../vendor/autoload.php';
 
+$appContainer = new AppContainer();
+
+AppFactory::setContainer($appContainer->getContainer());
 $app = AppFactory::create();
 
 $app->get('/{name}', function (Request $request, Response $response, array $args) {

@@ -2,17 +2,17 @@
 
 namespace App\Containers;
 
-use App\Containers\ContainerInterface;
+use GuzzleHttp\Client;
 
-class GruzleContainer implements ContainerInterface
-{
-   public function generateDepency() {
+class GruzzleContainer implements ContainerInterface {
 
-   }
+    private const GOOGLE_BOOKS_URI = "https://www.googleapis.com/books/v1/";
 
-    public function generateContainer()
+    public static function generateContainer(): Client
     {
-        // TODO: Implement generateContainer() method.
+        return new Client([
+            "base_uri" => self::GOOGLE_BOOKS_URI
+        ]);
     }
 }
 
