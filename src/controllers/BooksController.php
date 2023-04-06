@@ -20,6 +20,6 @@ class BooksController extends AbstractController {
 
 
     private function getGruzzleClient(): Client {
-        return $this->getContainer()->get(GruzzleContainer::SERVICE);
+        return $this->getContainer()->get(GruzzleContainer::getService());
     }
 }

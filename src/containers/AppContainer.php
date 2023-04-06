@@ -10,7 +10,7 @@ class AppContainer {
     public function __construct()
     {
         $this->container = new Container();
-        $this->container->set('Gruzzle', GruzzleContainer::generateContainer());
+        $this->container->set(GruzzleContainer::getService(), GruzzleContainer::generateContainer());
     }
 
     public function getContainer(): Container {
