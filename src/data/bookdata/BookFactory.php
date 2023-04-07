@@ -16,7 +16,7 @@ class BookFactory {
     private string $urlThumbnail;
     private string $ISBM;
     private int $pagesCount;
-    public const DATE_FORMAT_RECEIVED = "2000-01-01";
+    public const DATE_FORMAT_RECEIVED = "Y-m-d";
 
     public function setTitle(string $title): void {
         $this->title = $title;
