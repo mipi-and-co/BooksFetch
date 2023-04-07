@@ -22,7 +22,8 @@ class ObjectFromBookAPIToBookParser implements ObjectParser {
     private const THUMBNAIL = "thumbnail";
 
 
-    public static function parseObject(mixed $jsonObject): object {
+    public static function parseObject(mixed $jsonObject): Book
+    {
         $bookFactory = new BookFactory();
 
         $bookFactory->setTitle($jsonObject->{self::VOLUME_INFO}->{self::TITLE});
