@@ -1,6 +1,6 @@
 <?php
 
-namespace App\data\book;
+namespace App\Data\BookData;
 
 use DateTime;
 use http\Exception\InvalidArgumentException;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\data\book;
+namespace App\Data\BookData;
 
 use App\Data\JsonParser;
 use DateTime;
