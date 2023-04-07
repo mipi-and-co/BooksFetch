@@ -16,7 +16,7 @@ class Book implements JsonSerializable {
     private string $urlThumbnail;
     private string $ISBM;
     private int $pagesCount;
-    private static string $DATE_FORMAT = "2000-01-01";
+    private static string $DATE_FORMAT = "d-m-Y";
 
     public function __construct(string $title, string $subtitle, array $author, string $language, string $type, array $thematic, DateTime $publicationDate, string $urlThumbnail, string $ISBM, int $pagesCount) {
         $this->title = $title;
