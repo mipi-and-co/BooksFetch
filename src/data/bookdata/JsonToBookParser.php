@@ -2,10 +2,10 @@
 
 namespace App\Data\BookData;
 
-use App\Data\JsonParser;
+use App\Data\ObjectParser;
 use DateTime;
 
-class JsonFromBookAPIToBookParser implements JsonParser {
+class ObjectFromBookAPIToBookParser implements ObjectParser {
     private const VOLUME_INFO = "volumeInfo";
     private const TITLE = "title";
     private const SUBTITLE = "subtitle";
@@ -22,20 +22,20 @@ class JsonFromBookAPIToBookParser implements JsonParser {
     private const THUMBNAIL = "thumbnail";
 
 
-    public static function parseJson(string $jsonString): object {
+    public static function parseObject(mixed $jsonObject): object {
         $bookFactory = new BookFactory();
 
-        $bookFactory->setTitle($jsonString->{self::VOLUME_INFO}->{self::TITLE});
-        $bookFactory->setSubtitle($jsonString->{self::VOLUME_INFO}->{self::SUBTITLE});
-        $bookFactory->setTabAuthor($jsonString->{self::VOLUME_INFO}->{self::AUTHOR});
+        $bookFactory->setTitle($jsonObject->{self::VOLUME_INFO}->{self::TITLE});
+        $bookFactory->setSubtitle($jsonObject->{self::VOLUME_INFO}->{self::SUBTITLE});
+        $bookFactory->setTabAuthor($jsonObject->{self::VOLUME_INFO}->{self::AUTHOR});
 
-        $bookFactory->setPublicationDate(self::getDateTimeFromStr($jsonString->{self::PUBLISHED_DATE}));
-        $bookFactory->setISBM13($jsonString->{self::ISBM13});
-        $bookFactory->setType($jsonString->{self::PRINT_TYPE});
-        $bookFactory->setThematic($jsonString->{self::THEMATIC});
-        $bookFactory->setLanguage($jsonString->{self::ACCESS_INFO}->{self::LANGUAGE});
-        $bookFactory->setPagesCount($jsonString->{self::PAGES_COUNT});
-        $bookFactory->setUrlThumbnail($jsonString->{self::IMAGES_LINKS}->{self::THUMBNAIL});
+        $bookFactory->setPublicationDate(self::getDateTimeFromStr($jsonObject->{self::PUBLISHED_DATE}));
+        $bookFactory->setISBM13($jsonObject->{self::ISBM13});
+        $bookFactory->setType($jsonObject->{self::PRINT_TYPE});
+        $bookFactory->setThematic($jsonObject->{self::THEMATIC});
+        $bookFactory->setLanguage($jsonObject->{self::ACCESS_INFO}->{self::LANGUAGE});
+        $bookFactory->setPagesCount($jsonObject->{self::PAGES_COUNT});
+        $bookFactory->setUrlThumbnail($jsonObject->{self::IMAGES_LINKS}->{self::THUMBNAIL});
 
         return $bookFactory->create();
     }
