@@ -11,5 +11,12 @@ class SearchResult {
         $this->nbElemResult = $nbElemResult;
     }
 
+    public function getBooksTab(): array {
+        return $this->booksTab;
+    }
+
+    public function getNbElemResult(): int {
+        return $this->nbElemResult;
+    }
 
 }

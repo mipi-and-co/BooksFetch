@@ -2,7 +2,7 @@
 
 namespace App\Data\SearchResultData;
 
-use App\Data\BookData\ObjectFromBookAPIToBookParser;
+use App\Data\BookData\ObjectToBookParser;
 use App\Data\ObjectParser;
 
 class ObjectToSearchResultParser implements ObjectParser {
@@ -13,10 +13,10 @@ class ObjectToSearchResultParser implements ObjectParser {
     public static function parseObject(mixed $jsonObject): SearchResult {
         $nbElemResult = intval($jsonObject->{self::NB_ELEM_RESULT});
         $booksTab = array();
-        $booksTabObject = $jsonObject->{self::BOOKS_ARRAY};
+        $booksTabObject = (array) $jsonObject->{self::BOOKS_ARRAY};
 
         foreach ($booksTabObject as $bookObject) {
-            array_push($booksTab, ObjectFromBookAPIToBookParser::parseObject($bookObject));
+            $booksTab[] = ObjectToBookParser::parseObject($bookObject);
         }
 
         return new SearchResult($booksTab, $nbElemResult);
