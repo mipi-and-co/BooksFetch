@@ -20,6 +20,8 @@ class BooksController extends AbstractController {
     public function fetchBookDataByTitle(Request $request, Response $response, array $args): Response {
         $googleBooksResponse = $this->wrapper->fetchBooksDataByTitle("Antoine de Saint-Exupery");
         $response->getBody()->write("bonjour");
+
+        var_dump($googleBooksResponse->getBooksTab()[2]->getAuthors());
         return $response;
     }
 
